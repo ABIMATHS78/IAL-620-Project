@@ -1,0 +1,733 @@
+---
+title: "Impact Of The Great Recession"
+author: "Mojeed Abisiga"
+date: "`r Sys.Date()`"
+runtime: shiny
+
+output: 
+  flexdashboard::flex_dashboard:
+      vertical_layout: fill
+---
+
+```{r Libraries, include=FALSE, message=FALSE}
+
+if (!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+
+if (!require("DT")) install.packages("DT")
+library(DT)
+
+if (!require("Hmisc")) install.packages("Hmisc")
+library(Hmisc)
+
+if (!require("lubridate")) install.packages("lubridate")
+library(lubridate)
+
+if (!require("plotly")) install.packages("plotly")
+library(plotly)
+
+if (!require("gridExtra")) install.packages("gridExtra")
+library(gridExtra)
+
+if (!require("maps")) install.packages("maps")
+library(maps)
+
+if (!require("shiny")) install.packages("shiny")
+library(shiny)
+
+if (!require("shinydashboard")) install.packages("shinydashboard")
+library(shinydashboard)
+
+
+```
+
+
+
+```{r Global knitr Setup, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
+
+knitr::opts_chunk$set(
+	#Chunk Code Options
+	echo = FALSE, # Show the code in the output
+	include = TRUE, # Show the results in the output.
+	
+	message = FALSE, # messages generated from code are not shown.
+	warning = FALSE, # warnings generated from code are not shown.
+	
+	results = 'asis', # no additional formatting is applied to the results
+	comment = NA, 
+	
+	# don't add the prompt character in R Code, i.e., 
+	# don't stop to ask the user for execution
+	prompt = FALSE, 	
+	
+	# Plot Options - set the width and height (in inches) of all plots generated.
+	#fig.height = 6,
+	#fig.width = 8,
+	# 
+	# fig.retina only applies to html output 
+	# controls the quality (dpi) of the image.
+	fig.retina = 2,
+	
+	# default alignment of all figures.
+	fig.align = 'center'
+)
+
+# round all decimals to 4 digits (after the decimal),
+# unless specified otherwise in the local options. 
+options(digits = 4)
+
+```
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+library(readxl) #To read an XL File
+library (tidyverse) # the set of tidyverse packages.
+library(magrittr) # not really needed since its part of the tidyverse, but gives you the %>% pipe to write R code.
+library(lubridate) # To work with dates.
+```
+
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+setwd("C:/Users/Damilola/Desktop/MSIA Courses/Second Semester/IAF 605/Great_Recession_R_Assignment/")
+
+Economy_Data <- read_excel("Data Source/Economy_Data.xlsx")
+CPI <- read_excel("Data Source/CPI.xlsx")
+death <- read_csv("Data Source/Death Rate.csv")
+birth <- read_csv("Data Source/Birth Rate.csv")
+health_exp <- read_csv("Data Source/Health_Expenditures.csv")
+	
+
+```
+
+
+
+```{r load data, include = FALSE, echo=FALSE}
+
+getwd()
+
+setwd("C:/Users/Damilola/Desktop/MSIA Courses/Second Semester/IAF 605/Great_Recession_R_Assignment/")
+
+load("recession.RData")
+
+
+```
+
+
+
+```{r setup, include=FALSE}
+
+Economy_Data <- Economy_Data %>% 
+  mutate(period = as.factor(Year))
+
+
+GDPRecessionData <- Economy_Data %>%
+  filter(Region_Name %in% c("North Carolina", "Massachusetts", "Florida", "California"))
+
+# label the factors into 3 categories - Pre-Recession, Recession, and Post-Recession.
+GDPRecessionData$period <- 
+  recode(GDPRecessionData$period,
+         '2004' = "Pre-Recession",
+         '2005' = "Pre-Recession",
+         '2006' = "Pre-Recession",
+         '2007' = "Recession",
+         '2008' = "Recession",
+         '2009' = "Recession",
+         '2010' = "Post-Recession",
+         '2011' = "Post-Recession",
+         '2012' = "Post-Recession",
+         .default = "Other"
+  )
+
+GDPRecessionData <- GDPRecessionData %>% 
+  select(period, Year, everything())
+
+
+# GDPRecessionData <- GDPRecessionData %>% rename_all(function(x) gsub(" ", "_", x))
+
+
+#Save the processed Data.---------
+#Now that our data is processed, we can save the RecessionData Object as as "RecessioData.RData" in the "Data" Folder
+save(GDPRecessionData, file = "recession.RData")
+
+load("recession.RData")
+
+```
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+Total_Gdp <- GDPRecessionData %>%
+  select("Region_Name", "Total_GDP")
+
+Total_Gdp <- Total_Gdp %>%
+  group_by(Region_Name) %>%
+  summarise(Total_GDP = sum(Total_GDP))
+
+
+
+```
+
+
+
+```{r echo=FALSE, message=FALSE}
+
+us_map <- map_data('state')
+
+colnames(us_map)[5] <- "Region_Name"
+
+Total_Gdp = Total_Gdp %>% 
+  mutate(Region_Name = gsub('_', '', tolower(Region_Name)))
+
+
+
+```
+
+
+
+
+# GDP as a Percentage of Population
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+### Economic output per person living in US
+<span style="color: purple;">**It cand be seen that GDP was somewhat steady or the same during recession, with slight decrease but it bounced back real quick after recession**</span>
+#### 
+
+
+```{r echo=FALSE, message=FALSE}
+
+a <- GDPRecessionData %>% 
+  ggplot(aes(x=Year, y = Total_GDP))+
+  geom_smooth	(aes(color=Total_GDP))+
+  labs(title="GDP Growth Rate")
+
+ggplotly(a)
+remove(a)
+
+
+```
+
+
+
+### Gross Domestic Product (GDP) by States
+<span style="color: purple;">**North Carolina and Massachusetts GDP was a lot higher than the other states during the whole period **</span>
+
+```{r echo=FALSE, message=FALSE}
+
+joined_data <- merge(Total_Gdp, us_map, by = "Region_Name" )
+
+
+m <- joined_data%>% 
+  ggplot(aes(x = long, y = lat, 
+        fill = avg_SNAP_rate, text = paste("State:",Region_Name))) +
+  geom_polygon(
+    aes(x = long, y = lat, 
+        group = group, fill = Total_GDP), 
+    color = 'black') +
+  scale_fill_continuous(     )+
+  labs(title="GDP by Region")
+
+
+ggplotly(m)
+remove(m)
+
+```
+
+
+### GDP Per Capita over the Period
+<span style="color: purple;">**The Total GDP Per Capita was increasing steadily per year before recession but during recession it remained slightly the same at first then dropped but pst recession the Total GDP bounced back and started increasing**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+b <- GDPRecessionData %>% 
+  ggplot(aes(x=Year, y = GDP_Per_Capita))+
+  geom_col	(aes(color=period))+
+  labs(title="GDP Per Capita")
+
+ggplotly(b)
+remove(b)
+
+
+```
+
+
+
+### Population of each States{data-commentary-width=250}
+<span style="color: blue;">**The key highlight was that the Population of California kep on increasing throughout all periods and was not affected by the recession but the state of Massachusetts had their Population somewhat the same throught all period**</span>
+
+
+####
+```{r echo=FALSE}
+
+sliderInput(
+  inputId='YearRange',
+  label='Select Years to display',
+  min = unique(GDPRecessionData$`Year`) %>% min(),
+  max = unique(GDPRecessionData$`Year`) %>% max(),
+  value = c(
+    unique(GDPRecessionData$`Year`) %>% min(),
+    unique(GDPRecessionData$`Year`) %>% max()),
+  step = 1
+  )
+
+
+
+Regions = unique(GDPRecessionData$`Region_Name`) %>% factor() 
+
+# selectInput(
+#   inputId='Regions',
+#   label='Select Region',
+#   choices = Regions,
+#   selected = Regions[0]
+#   )
+
+checkboxGroupInput(
+  selected = c("California", "Massachusetts"),
+  inputId = "Regions",
+  label = "Select Region",
+  choices =  Regions
+)
+
+```
+####
+
+```{r echo=FALSE, message=FALSE}
+
+	renderPlotly({
+	c <- GDPRecessionData %>%
+		      filter(GDPRecessionData$`Year` >= input$YearRange[1] &
+               GDPRecessionData$`Year` <= input$YearRange[2]) %>%
+		filter(Region_Name == input$Regions) %>% 
+		ggplot(., aes(x=Year, y = Tota_Population))+
+    	geom_col(aes(fill=Region_Name), position = "dodge")+
+    	geom_line(aes(color=Region_Name,))+
+    	geom_point(aes(color=Region_Name, size=Tota_Population))+
+    	geom_smooth(SE=FALSE)+
+    	facet_wrap(~Region_Name, nrow(2))+
+    	labs(title="Population by Region ")
+
+ggplotly(c)
+
+})
+
+```
+
+
+# Income and Savings
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+
+### GDP of each State over the Periods
+<span style="color: purple;">**Pre-recession the GDP of all the states were increasing but during the recession the GDP  Florida's GDP showed a decrease trend while Massachussetts continued to increase but the other 2 states were flunctuating (increase and decrease)**</span>
+
+####
+```{r echo=FALSE}
+
+Periods = unique(GDPRecessionData$`period`) %>% factor() 
+
+selectInput(
+  inputId='Periods',
+  label='Select Period',
+  choices = Periods,
+  selected = Periods[0]
+  )
+
+
+```
+####
+
+```{r echo=FALSE, message=FALSE}
+renderPlotly({
+d <- GDPRecessionData %>% 
+	filter(period == input$Periods) %>% 
+	group_by(Region_Name) %>% 
+	ggplot(aes(x=Year, y = Total_GDP))+
+	geom_col(aes(fill= period), position = "dodge")+
+	geom_smooth(aes(), SE=TRUE)+
+	facet_wrap(~Region_Name, nrow = 2)+
+  labs(title="GDP by Region in Different Periods")
+
+ggplotly(d)
+
+})
+
+```
+
+
+### Total GDP of the different States
+<span style="color: purple;">**No doubt that California had the highest Total GDP, more than times two of the other states**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+if (!require("formattable")) install.packages("formattable")
+library(formattable)
+
+Total_Gdp %>% 
+formattable(
+  align=c("lr"),
+  list(
+    
+    `Region_Name` = formatter("span",
+                           style = ~ style(
+                             color = "DarkBlue",
+                             font.weight = "bold")),
+    `Total_GDP` = currency,
+    
+    `Total_GDP` = color_bar("#009ACD")
+
+
+    )
+  )
+
+
+```
+   
+   
+   
+# Housing
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+
+### Home Values during the Different Periods
+<span style="color: purple;">**The Home Values was increasing before recession but as the recession started, the Home Values started decreasing even post recession**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+f <- GDPRecessionData %>% 
+	group_by(Region_Name) %>% 
+	ggplot(aes(x=Year, y = All_Homes_Value))+
+	geom_col(aes(fill=period, alpha=0.7), position = "dodge")+
+	geom_smooth(aes(color=Year), SE=TRUE)+
+  labs(title="Home Values")
+
+ggplotly(f)
+remove(f)
+
+```
+
+
+### Rental Vacancy Rate over the Years
+<span style="color: purple;">**Rental Vacancy Rate for California and North Carolina were not too different from each other during the whole period but they were both flunctuating and surpassing one another but the Rental Vacancy Rate for Florida and North Carolina were higher than other states with Florida surpassing North Carolina during recession and even after recession**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+g <- GDPRecessionData %>% 
+  group_by(Region_Name) %>% 
+  ggplot(aes(x=Year, y = Rental_Vacancy_Rate))+
+  geom_line	(aes(color=Region_Name))+
+  labs(title="Rental Vacancy Rate")
+
+ggplotly(g)
+remove(g)
+
+
+```
+
+
+### Home Vacancy Rate over the Years
+<span style="color: purple;">**Home Vacancy was higher during Recession than before and after Recession**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+h <- GDPRecessionData %>% 
+	group_by(period) %>% 
+	ggplot(aes(x=Year, y = Home_Vacancy_Rate))+
+	geom_area(aes(fill=period, alpha=0.7), position = "dodge")+
+  labs(title="Home Vacancy Rate")
+
+ggplotly(h)
+remove(h)
+
+
+```
+
+
+### Home Ownership for Different Regions
+<span style="color: purple;">**Home Ownership was dropping throughout the whole period for all states except for Massachussetts which was steadily and slightly increasing**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+e <- GDPRecessionData %>% 
+	group_by(Region_Name) %>% 
+	ggplot(aes(x=Year, y = Home_Ownership_Rate))+
+	geom_jitter(aes(color=Region_Name), position = "dodge")+
+	geom_smooth(aes(color=Region_Name), SE=TRUE)+
+	facet_grid(~Region_Name)+
+  labs(title="Home Ownership Rate by Region")
+
+ggplotly(e)
+remove(e)
+
+
+```
+
+
+# Unemployment
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+
+
+### Labour Force for each Region
+<span style="color: purple;">**Unemployment is higher in California than the three other states.**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+j <- GDPRecessionData %>%
+    ggplot( mapping = aes(x=Year, y=Labor_Force))+
+    geom_point(aes(size=Labor_Force, color=Region_Name))+
+    geom_smooth(se=TRUE)+
+  labs(title="Labor Force across all regions")
+
+ggplotly(j)
+remove(j)
+
+
+```
+
+
+### Labour Force Per Region over the Periods
+<span style="color: purple;">**No State surpassed one another in terms of Labour Force (comparing to one another), throughtout the period**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+i <- GDPRecessionData %>% 
+	group_by(Region_Name) %>% 
+	ggplot(aes(x=period, y = Labor_Force))+
+	geom_col(aes(fill=Region_Name, alpha=0.7), position = "dodge")+
+	geom_smooth(aes(color=Region_Name), SE=TRUE)+
+  labs(title="Labor Force by region in different period")
+
+ggplotly(i)
+remove(i)
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE}
+
+p <- GDPRecessionData %>% 
+  group_by(Region_Name) %>% 
+  ggplot(aes(x=Year, y = Unemployed_Persons))+
+  geom_boxplot (aes(color=Region_Name))+
+  labs(title="Unemployment Distribution by Region")
+
+ggplotly(p)
+remove(p)
+
+
+```
+
+
+
+# CPI and Net Income
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+
+### CPI Over The Years
+<span style="color: purple;">**The CPI was increasing steadily over the years, just as if it was not affected by the Recession**</span>
+
+
+```{r echo=FALSE, message=FALSE}
+
+k <- CPI %>% 
+  ggplot(aes(x=Year, y = CPI))+
+  geom_smooth	(aes(color= CPI))+
+  labs(title="CPI")
+
+ggplotly(k)
+remove(k)
+
+
+```
+    
+### Personal Income of each State over the Years
+<span style="color: purple;">**The percent change in Personal Income moving towards zero starting 2007 and hit lowest during 2009(in all 5 states) then started increasing afterwards. MA seemed to have less impact on Income during recession compared to other states.**</span>
+
+```{r echo=FALSE, message=FALSE}
+
+l <- GDPRecessionData %>% 
+  group_by(Region_Name) %>% 
+  ggplot(aes(x=Year, y = Income))+
+  geom_line	(aes(color=Region_Name))+
+  labs(title="Personal Income")
+
+ggplotly(l)
+remove(l)
+
+
+```
+
+
+
+# Health
+
+####  {}
+
+**Please click on each of the following tab to explore different visualizations and findings during pre-recession, post-recession and great recession(2007-2009).**
+
+## Column{.tabset}
+
+
+### Health Expenditure{data-commentary-width=250}
+<span style="color: red;">**The percent change in expenditure in health across all five categories were decreasing between 2007-2009 at national level.**</span>
+
+
+```{r Percent Change in Health Expenditure, echo=FALSE, include=TRUE, message=FALSE}
+
+features1 <- c("Mental illness","Health services","Nursing homes","Medical services by provider","Neoplasms","Dental services")
+aChart <- health_exp %>% 
+  select(-Date) %>% 
+  rename(Expenditure = `Expenditure in Billions`) %>% 
+  filter(Features %in% features1) %>% 
+  filter(Year<=2014 & Year >= 2001) %>% 
+  mutate_at("Year",as.numeric) %>% 
+   group_by(Features) %>% 
+  arrange(Year, .by_group = TRUE) %>%
+   mutate(percent_change = (Expenditure/lag(Expenditure)-1)*100) %>% 
+   ggplot(.,aes(x = Year,y = percent_change,color = Features))+
+   geom_line(size=0.9)+
+   geom_point(size=2)+
+   scale_x_continuous(limits = c(2002, 2014), breaks = seq(2002, 2014, 1))+
+    labs(title = "Percent Change in Health Expenditure at National Level",
+         x= "Year",
+         y = "Percent Change of Expenditure (%)")
+ggplotly(aChart)
+remove(aChart)
+
+```
+
+
+# Select Different Variables
+
+#### 
+
+**Please select different periods, states, and variables of your choice to visualize and analyze the results during pre-recession, post-recession and great recession(2007-2009).** 
+
+## Column{data-width=150}
+### Select States and Period
+<span style="color: purple;">**The percent change in Personal Income moving towards zero starting 2007 and hit lowest during 2009(in all 5 states) then started increasing afterwards.**</span>
+
+```{r Data prep}
+
+OutputData <- GDPRecessionData %>% rename_all(function(x) gsub(" ", "_", x))
+
+OutputData <-  OutputData%>% 
+  mutate(period = case_when(Year<2008~"Pre-Recession",Year<=2009 ~"Recession",Year > 2009~"Post-Recession")) # label the factors into 3 categories - Pre-Recession, Recession, and Post-Recession.
+
+
+OutputData1 <- OutputData %>%
+  group_by(Year,Region_Name) %>% 
+  summarise(Average_Personal_Income = mean(Income),
+         Average_GDP = mean(Total_GDP),
+         Average_Labor_Force = mean(Labor_Force),
+         Average_Home_Ownership_Rate = mean(Home_Ownership_Rate)) %>%
+	mutate(period = case_when(Year<2008~"Pre-Recession",Year<=2009 ~"Recession",Year > 2009~"Post-Recession")) %>%  # label the factors into 3 categories - Pre-Recession, Recession, and Post-Recession.
+	select(period,Region_Name,Year, everything())
+
+```
+
+
+```{r TheSelectPeriod}
+selectInput(
+	inputId = "ThePeriodSelected",
+	label = "Please select the Period",
+	choices = unique(OutputData1$period)
+)
+
+```
+
+
+
+```{r State}
+
+selectInput(
+	inputId = "TheStateSelected",
+	label = "Please select the state",
+	choices = unique(OutputData1$Region_Name)
+)
+
+```
+
+```{r SelectVars}
+
+
+
+selectInput(
+	inputId = "VariablesSelected",
+	label = "Please select the Variable",
+	choices = c("Average_Personal_Income","Average__GDP",
+	"Average_Labor_Force","Average_Home_Ownership_Rate")
+)
+```
+
+
+## Column{}
+### Plotting Selected Varaible for Selected State and Period
+```{r}
+
+renderPlot({
+
+myData <- OutputData1 %>%
+	filter(Region_Name ==input$TheStateSelected) %>%
+	select(period, Region_Name, Year,input$VariablesSelected)
+
+ggplot(myData,
+		aes_string( 
+			x= "Year",
+			y = input$VariablesSelected))+
+	geom_col(aes(fill=`period`) , alpha=0.6, position = "dodge")+
+	geom_point(size=5)+
+	geom_smooth(alpha=0.4, se=TRUE)+
+	scale_fill_brewer(palette="Paired")+
+	labs(
+      title = input$TheStateSelected,
+      subtitle = input$VariablesSelected,
+      x= "Year",
+      y = input$VariablesSelected)+
+	theme(
+		plot.title = element_text(
+			margin = margin(t = 10, b = 10), size=18),
+		legend.position = 'right'
+		)
+
+})
+
+```
+
+
+
+### Table{}
+```{r}
+
+renderDT(
+	OutputData1 %>% 
+	filter(Region_Name ==input$TheStateSelected) %>% 
+	filter(period ==input$ThePeriodSelected) %>% 
+	select(period, Region_Name, Year,input$VariablesSelected)
+)
+
+```

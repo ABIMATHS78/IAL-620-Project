@@ -1,0 +1,701 @@
+﻿Date,Year,Expenditure in Billions,Features
+1/1/2001,2001,1209.39,Health
+1/1/2002,2002,1317.08,Health
+1/1/2003,2003,1410.72,Health
+1/1/2004,2004,1514.93,Health
+1/1/2005,2005,1612.26,Health
+1/1/2006,2006,1715,Health
+1/1/2007,2007,1823.24,Health
+1/1/2008,2008,1909.27,Health
+1/1/2009,2009,1999.26,Health
+1/1/2010,2010,2078.1,Health
+1/1/2011,2011,2153.23,Health
+1/1/2012,2012,2230.73,Health
+1/1/2013,2013,2288.26,Health
+1/1/2014,2014,2409.13,Health
+1/1/2015,2015*,2564.8,Health
+1/1/2016,2016*,2690.12,Health
+1/1/2017,2017*,2795.97,Health
+1/1/2018,2018*,2919.48,Health
+1/1/2019,2019*,3073.87,Health
+1/1/2000,2000,1109.59,Health
+1/1/2001,2001,1151.49,Health services
+1/1/2002,2002,1255.13,Health services
+1/1/2003,2003,1343.89,Health services
+1/1/2004,2004,1442.47,Health services
+1/1/2005,2005,1533.56,Health services
+1/1/2006,2006,1629.44,Health services
+1/1/2007,2007,1729.86,Health services
+1/1/2008,2008,1812.74,Health services
+1/1/2009,2009,1900.98,Health services
+1/1/2010,2010,1973.87,Health services
+1/1/2011,2011,2042.37,Health services
+1/1/2012,2012,2114.53,Health services
+1/1/2013,2013,2168.05,Health services
+1/1/2014,2014,2284.6,Health services
+1/1/2015,2015*,2433.83,Health services
+1/1/2016,2016*,2554.6,Health services
+1/1/2017,2017*,2655.84,Health services
+1/1/2018,2018*,2773.4,Health services
+1/1/2019,2019*,2921.11,Health services
+1/1/2000,2000,1052.23,Health services
+1/1/2001,2001,988.51,Medical services by disease
+1/1/2002,2002,1080.95,Medical services by disease
+1/1/2003,2003,1160.42,Medical services by disease
+1/1/2004,2004,1247.43,Medical services by disease
+1/1/2005,2005,1326.72,Medical services by disease
+1/1/2006,2006,1413.75,Medical services by disease
+1/1/2007,2007,1499.06,Medical services by disease
+1/1/2008,2008,1569.41,Medical services by disease
+1/1/2009,2009,1650.94,Medical services by disease
+1/1/2010,2010,1714.32,Medical services by disease
+1/1/2011,2011,1778.66,Medical services by disease
+1/1/2012,2012,1846.24,Medical services by disease
+1/1/2013,2013,1896.19,Medical services by disease
+1/1/2014,2014,2005.04,Medical services by disease
+1/1/2015,2015*,2144.38,Medical services by disease
+1/1/2016,2016*,2252.51,Medical services by disease
+1/1/2017,2017*,2345.82,Medical services by disease
+1/1/2018,2018*,2452.37,Medical services by disease
+1/1/2019,2019*,2587.18,Medical services by disease
+1/1/2000,2000,900.75,Medical services by disease
+1/1/2001,2001,28.03,Infectious and parasitic diseases
+1/1/2002,2002,32.4,Infectious and parasitic diseases
+1/1/2003,2003,35.66,Infectious and parasitic diseases
+1/1/2004,2004,35.44,Infectious and parasitic diseases
+1/1/2005,2005,41.89,Infectious and parasitic diseases
+1/1/2006,2006,48.17,Infectious and parasitic diseases
+1/1/2007,2007,53.14,Infectious and parasitic diseases
+1/1/2008,2008,58.72,Infectious and parasitic diseases
+1/1/2009,2009,63.34,Infectious and parasitic diseases
+1/1/2010,2010,66.76,Infectious and parasitic diseases
+1/1/2011,2011,71.4,Infectious and parasitic diseases
+1/1/2012,2012,76.69,Infectious and parasitic diseases
+1/1/2013,2013,81.64,Infectious and parasitic diseases
+1/1/2014,2014,93.12,Infectious and parasitic diseases
+1/1/2015,2015*,109.48,Infectious and parasitic diseases
+1/1/2016,2016*,120.23,Infectious and parasitic diseases
+1/1/2017,2017*,126.42,Infectious and parasitic diseases
+1/1/2018,2018*,135.33,Infectious and parasitic diseases
+1/1/2019,2019*,143.03,Infectious and parasitic diseases
+1/1/2000,2000,24.92,Infectious and parasitic diseases
+1/1/2001,2001,66.61,Neoplasms
+1/1/2002,2002,71.56,Neoplasms
+1/1/2003,2003,76.39,Neoplasms
+1/1/2004,2004,84.34,Neoplasms
+1/1/2005,2005,88.67,Neoplasms
+1/1/2006,2006,95.61,Neoplasms
+1/1/2007,2007,100.35,Neoplasms
+1/1/2008,2008,103.75,Neoplasms
+1/1/2009,2009,108.65,Neoplasms
+1/1/2010,2010,111.81,Neoplasms
+1/1/2011,2011,116.87,Neoplasms
+1/1/2012,2012,121.7,Neoplasms
+1/1/2013,2013,122.43,Neoplasms
+1/1/2014,2014,129.36,Neoplasms
+1/1/2015,2015*,138.12,Neoplasms
+1/1/2016,2016*,138.15,Neoplasms
+1/1/2017,2017*,145.4,Neoplasms
+1/1/2018,2018*,155.86,Neoplasms
+1/1/2019,2019*,169.58,Neoplasms
+1/1/2000,2000,60.79,Neoplasms
+1/1/2001,2001,58.25,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2002,2002,67.43,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2003,2003,72.31,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2004,2004,80.56,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2005,2005,86.67,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2006,2006,94.44,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2007,2007,101.24,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2008,2008,106.72,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2009,2009,112.15,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2010,2010,116.6,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2011,2011,122.44,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2012,2012,127.5,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2013,2013,129.14,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2014,2014,139.28,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2015,2015*,147.59,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2016,2016*,154.09,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2017,2017*,160.79,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2018,2018*,170.36,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2019,2019*,182.25,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2000,2000,49.91,Endocrine; nutritional; and metabolic diseases and immunity disorders
+1/1/2001,2001,43.08,Mental illness
+1/1/2002,2002,46.69,Mental illness
+1/1/2003,2003,49.42,Mental illness
+1/1/2004,2004,51.49,Mental illness
+1/1/2005,2005,55.3,Mental illness
+1/1/2006,2006,59.32,Mental illness
+1/1/2007,2007,64.28,Mental illness
+1/1/2008,2008,67.75,Mental illness
+1/1/2009,2009,71.13,Mental illness
+1/1/2010,2010,74.21,Mental illness
+1/1/2011,2011,77.61,Mental illness
+1/1/2012,2012,81.12,Mental illness
+1/1/2013,2013,85.02,Mental illness
+1/1/2014,2014,94.85,Mental illness
+1/1/2015,2015*,103.88,Mental illness
+1/1/2016,2016*,103.96,Mental illness
+1/1/2017,2017*,114.51,Mental illness
+1/1/2018,2018*,122.02,Mental illness
+1/1/2019,2019*,134.56,Mental illness
+1/1/2000,2000,41.08,Mental illness
+1/1/2001,2001,69.99,Diseases of the nervous system and sense organs
+1/1/2002,2002,77.01,Diseases of the nervous system and sense organs
+1/1/2003,2003,80.86,Diseases of the nervous system and sense organs
+1/1/2004,2004,85.2,Diseases of the nervous system and sense organs
+1/1/2005,2005,89.8,Diseases of the nervous system and sense organs
+1/1/2006,2006,95.83,Diseases of the nervous system and sense organs
+1/1/2007,2007,103.65,Diseases of the nervous system and sense organs
+1/1/2008,2008,109.37,Diseases of the nervous system and sense organs
+1/1/2009,2009,115.18,Diseases of the nervous system and sense organs
+1/1/2010,2010,120.96,Diseases of the nervous system and sense organs
+1/1/2011,2011,126.81,Diseases of the nervous system and sense organs
+1/1/2012,2012,133.23,Diseases of the nervous system and sense organs
+1/1/2013,2013,139.04,Diseases of the nervous system and sense organs
+1/1/2014,2014,149.3,Diseases of the nervous system and sense organs
+1/1/2015,2015*,160.72,Diseases of the nervous system and sense organs
+1/1/2016,2016*,178.13,Diseases of the nervous system and sense organs
+1/1/2017,2017*,186.96,Diseases of the nervous system and sense organs
+1/1/2018,2018*,196.25,Diseases of the nervous system and sense organs
+1/1/2019,2019*,207.31,Diseases of the nervous system and sense organs
+1/1/2000,2000,63.93,Diseases of the nervous system and sense organs
+1/1/2001,2001,157.9,Diseases of the circulatory system
+1/1/2002,2002,169.01,Diseases of the circulatory system
+1/1/2003,2003,178.84,Diseases of the circulatory system
+1/1/2004,2004,192.43,Diseases of the circulatory system
+1/1/2005,2005,199.3,Diseases of the circulatory system
+1/1/2006,2006,208.46,Diseases of the circulatory system
+1/1/2007,2007,213.76,Diseases of the circulatory system
+1/1/2008,2008,219.86,Diseases of the circulatory system
+1/1/2009,2009,228.83,Diseases of the circulatory system
+1/1/2010,2010,233.6,Diseases of the circulatory system
+1/1/2011,2011,232.08,Diseases of the circulatory system
+1/1/2012,2012,231.75,Diseases of the circulatory system
+1/1/2013,2013,233.01,Diseases of the circulatory system
+1/1/2014,2014,241.21,Diseases of the circulatory system
+1/1/2015,2015*,255.08,Diseases of the circulatory system
+1/1/2016,2016*,254.19,Diseases of the circulatory system
+1/1/2017,2017*,260.53,Diseases of the circulatory system
+1/1/2018,2018*,272.77,Diseases of the circulatory system
+1/1/2019,2019*,291.36,Diseases of the circulatory system
+1/1/2000,2000,145.95,Diseases of the circulatory system
+1/1/2001,2001,99.39,Diseases of the respiratory system
+1/1/2002,2002,105.74,Diseases of the respiratory system
+1/1/2003,2003,113.78,Diseases of the respiratory system
+1/1/2004,2004,114.25,Diseases of the respiratory system
+1/1/2005,2005,127.22,Diseases of the respiratory system
+1/1/2006,2006,128.23,Diseases of the respiratory system
+1/1/2007,2007,133.92,Diseases of the respiratory system
+1/1/2008,2008,141.5,Diseases of the respiratory system
+1/1/2009,2009,145.26,Diseases of the respiratory system
+1/1/2010,2010,144.67,Diseases of the respiratory system
+1/1/2011,2011,150.25,Diseases of the respiratory system
+1/1/2012,2012,153.24,Diseases of the respiratory system
+1/1/2013,2013,156.12,Diseases of the respiratory system
+1/1/2014,2014,159.53,Diseases of the respiratory system
+1/1/2015,2015*,166.58,Diseases of the respiratory system
+1/1/2016,2016*,173.01,Diseases of the respiratory system
+1/1/2017,2017*,180.66,Diseases of the respiratory system
+1/1/2018,2018*,185.77,Diseases of the respiratory system
+1/1/2019,2019*,192.81,Diseases of the respiratory system
+1/1/2000,2000,92.46,Diseases of the respiratory system
+1/1/2001,2001,61.46,Diseases of the digestive system
+1/1/2002,2002,66.05,Diseases of the digestive system
+1/1/2003,2003,69.88,Diseases of the digestive system
+1/1/2004,2004,74.43,Diseases of the digestive system
+1/1/2005,2005,76.78,Diseases of the digestive system
+1/1/2006,2006,82.04,Diseases of the digestive system
+1/1/2007,2007,85.51,Diseases of the digestive system
+1/1/2008,2008,87.27,Diseases of the digestive system
+1/1/2009,2009,91.51,Diseases of the digestive system
+1/1/2010,2010,94.59,Diseases of the digestive system
+1/1/2011,2011,96.1,Diseases of the digestive system
+1/1/2012,2012,99.61,Diseases of the digestive system
+1/1/2013,2013,102.66,Diseases of the digestive system
+1/1/2014,2014,107.49,Diseases of the digestive system
+1/1/2015,2015*,113.53,Diseases of the digestive system
+1/1/2016,2016*,122.8,Diseases of the digestive system
+1/1/2017,2017*,126.54,Diseases of the digestive system
+1/1/2018,2018*,132.73,Diseases of the digestive system
+1/1/2019,2019*,138.91,Diseases of the digestive system
+1/1/2000,2000,57.21,Diseases of the digestive system
+1/1/2001,2001,62.49,Diseases of the genitourinary system
+1/1/2002,2002,66.72,Diseases of the genitourinary system
+1/1/2003,2003,72.1,Diseases of the genitourinary system
+1/1/2004,2004,80.44,Diseases of the genitourinary system
+1/1/2005,2005,85.43,Diseases of the genitourinary system
+1/1/2006,2006,91.48,Diseases of the genitourinary system
+1/1/2007,2007,96.84,Diseases of the genitourinary system
+1/1/2008,2008,99.85,Diseases of the genitourinary system
+1/1/2009,2009,104.77,Diseases of the genitourinary system
+1/1/2010,2010,106.74,Diseases of the genitourinary system
+1/1/2011,2011,109.7,Diseases of the genitourinary system
+1/1/2012,2012,113.68,Diseases of the genitourinary system
+1/1/2013,2013,116.34,Diseases of the genitourinary system
+1/1/2014,2014,121.53,Diseases of the genitourinary system
+1/1/2015,2015*,125.46,Diseases of the genitourinary system
+1/1/2016,2016*,119.08,Diseases of the genitourinary system
+1/1/2017,2017*,120.99,Diseases of the genitourinary system
+1/1/2018,2018*,126.27,Diseases of the genitourinary system
+1/1/2019,2019*,132.29,Diseases of the genitourinary system
+1/1/2000,2000,58.31,Diseases of the genitourinary system
+1/1/2001,2001,24.39,Complications of pregnancy; childbirth; and the puerperium
+1/1/2002,2002,24.85,Complications of pregnancy; childbirth; and the puerperium
+1/1/2003,2003,27.54,Complications of pregnancy; childbirth; and the puerperium
+1/1/2004,2004,28.99,Complications of pregnancy; childbirth; and the puerperium
+1/1/2005,2005,29.57,Complications of pregnancy; childbirth; and the puerperium
+1/1/2006,2006,31.98,Complications of pregnancy; childbirth; and the puerperium
+1/1/2007,2007,33.29,Complications of pregnancy; childbirth; and the puerperium
+1/1/2008,2008,34.74,Complications of pregnancy; childbirth; and the puerperium
+1/1/2009,2009,35.73,Complications of pregnancy; childbirth; and the puerperium
+1/1/2010,2010,38.32,Complications of pregnancy; childbirth; and the puerperium
+1/1/2011,2011,39.13,Complications of pregnancy; childbirth; and the puerperium
+1/1/2012,2012,43.43,Complications of pregnancy; childbirth; and the puerperium
+1/1/2013,2013,44.34,Complications of pregnancy; childbirth; and the puerperium
+1/1/2014,2014,44.9,Complications of pregnancy; childbirth; and the puerperium
+1/1/2015,2015*,46.32,Complications of pregnancy; childbirth; and the puerperium
+1/1/2016,2016*,51.64,Complications of pregnancy; childbirth; and the puerperium
+1/1/2017,2017*,52.53,Complications of pregnancy; childbirth; and the puerperium
+1/1/2018,2018*,54.82,Complications of pregnancy; childbirth; and the puerperium
+1/1/2019,2019*,54.11,Complications of pregnancy; childbirth; and the puerperium
+1/1/2000,2000,24.72,Complications of pregnancy; childbirth; and the puerperium
+1/1/2001,2001,24.23,Diseases of the skin and subcutaneous organs
+1/1/2002,2002,26.76,Diseases of the skin and subcutaneous organs
+1/1/2003,2003,27.9,Diseases of the skin and subcutaneous organs
+1/1/2004,2004,29.54,Diseases of the skin and subcutaneous organs
+1/1/2005,2005,31.43,Diseases of the skin and subcutaneous organs
+1/1/2006,2006,33.18,Diseases of the skin and subcutaneous organs
+1/1/2007,2007,35.36,Diseases of the skin and subcutaneous organs
+1/1/2008,2008,37.86,Diseases of the skin and subcutaneous organs
+1/1/2009,2009,40.08,Diseases of the skin and subcutaneous organs
+1/1/2010,2010,41.96,Diseases of the skin and subcutaneous organs
+1/1/2011,2011,43.26,Diseases of the skin and subcutaneous organs
+1/1/2012,2012,45.23,Diseases of the skin and subcutaneous organs
+1/1/2013,2013,47.07,Diseases of the skin and subcutaneous organs
+1/1/2014,2014,50.94,Diseases of the skin and subcutaneous organs
+1/1/2015,2015*,54.45,Diseases of the skin and subcutaneous organs
+1/1/2016,2016*,59.57,Diseases of the skin and subcutaneous organs
+1/1/2017,2017*,61.75,Diseases of the skin and subcutaneous organs
+1/1/2018,2018*,64.43,Diseases of the skin and subcutaneous organs
+1/1/2019,2019*,67.99,Diseases of the skin and subcutaneous organs
+1/1/2000,2000,22.25,Diseases of the skin and subcutaneous organs
+1/1/2001,2001,87.59,Diseases of the musculoskeletal system and connective tissue
+1/1/2002,2002,98.23,Diseases of the musculoskeletal system and connective tissue
+1/1/2003,2003,107.07,Diseases of the musculoskeletal system and connective tissue
+1/1/2004,2004,116.91,Diseases of the musculoskeletal system and connective tissue
+1/1/2005,2005,125.23,Diseases of the musculoskeletal system and connective tissue
+1/1/2006,2006,133.97,Diseases of the musculoskeletal system and connective tissue
+1/1/2007,2007,141.62,Diseases of the musculoskeletal system and connective tissue
+1/1/2008,2008,149.93,Diseases of the musculoskeletal system and connective tissue
+1/1/2009,2009,158.43,Diseases of the musculoskeletal system and connective tissue
+1/1/2010,2010,169.86,Diseases of the musculoskeletal system and connective tissue
+1/1/2011,2011,174.77,Diseases of the musculoskeletal system and connective tissue
+1/1/2012,2012,182.8,Diseases of the musculoskeletal system and connective tissue
+1/1/2013,2013,189.14,Diseases of the musculoskeletal system and connective tissue
+1/1/2014,2014,199.27,Diseases of the musculoskeletal system and connective tissue
+1/1/2015,2015*,213.33,Diseases of the musculoskeletal system and connective tissue
+1/1/2016,2016*,228.69,Diseases of the musculoskeletal system and connective tissue
+1/1/2017,2017*,236.11,Diseases of the musculoskeletal system and connective tissue
+1/1/2018,2018*,244.14,Diseases of the musculoskeletal system and connective tissue
+1/1/2019,2019*,252.72,Diseases of the musculoskeletal system and connective tissue
+1/1/2000,2000,76.53,Diseases of the musculoskeletal system and connective tissue
+1/1/2001,2001,72.94,Injury and poisoning
+1/1/2002,2002,76.37,Injury and poisoning
+1/1/2003,2003,81.46,Injury and poisoning
+1/1/2004,2004,84.8,Injury and poisoning
+1/1/2005,2005,88.79,Injury and poisoning
+1/1/2006,2006,93.72,Injury and poisoning
+1/1/2007,2007,99.09,Injury and poisoning
+1/1/2008,2008,102.58,Injury and poisoning
+1/1/2009,2009,107.33,Injury and poisoning
+1/1/2010,2010,112.41,Injury and poisoning
+1/1/2011,2011,115.67,Injury and poisoning
+1/1/2012,2012,118.2,Injury and poisoning
+1/1/2013,2013,121.49,Injury and poisoning
+1/1/2014,2014,127.21,Injury and poisoning
+1/1/2015,2015*,133.06,Injury and poisoning
+1/1/2016,2016*,136.19,Injury and poisoning
+1/1/2017,2017*,139.36,Injury and poisoning
+1/1/2018,2018*,143.07,Injury and poisoning
+1/1/2019,2019*,151.15,Injury and poisoning
+1/1/2000,2000,66.43,Injury and poisoning
+1/1/2001,2001,96.04,Symptoms; signs; and ill-defined conditions
+1/1/2002,2002,111.77,Symptoms; signs; and ill-defined conditions
+1/1/2003,2003,123.39,Symptoms; signs; and ill-defined conditions
+1/1/2004,2004,140.69,Symptoms; signs; and ill-defined conditions
+1/1/2005,2005,149.8,Symptoms; signs; and ill-defined conditions
+1/1/2006,2006,162.29,Symptoms; signs; and ill-defined conditions
+1/1/2007,2007,177.47,Symptoms; signs; and ill-defined conditions
+1/1/2008,2008,186.89,Symptoms; signs; and ill-defined conditions
+1/1/2009,2009,201.87,Symptoms; signs; and ill-defined conditions
+1/1/2010,2010,212.78,Symptoms; signs; and ill-defined conditions
+1/1/2011,2011,228.1,Symptoms; signs; and ill-defined conditions
+1/1/2012,2012,240.5,Symptoms; signs; and ill-defined conditions
+1/1/2013,2013,249.87,Symptoms; signs; and ill-defined conditions
+1/1/2014,2014,264.48,Symptoms; signs; and ill-defined conditions
+1/1/2015,2015*,290.39,Symptoms; signs; and ill-defined conditions
+1/1/2016,2016*,319.04,Symptoms; signs; and ill-defined conditions
+1/1/2017,2017*,338.2,Symptoms; signs; and ill-defined conditions
+1/1/2018,2018*,350.47,Symptoms; signs; and ill-defined conditions
+1/1/2019,2019*,365.85,Symptoms; signs; and ill-defined conditions
+1/1/2000,2000,83.7,Symptoms; signs; and ill-defined conditions
+1/1/2001,2001,36.11,Other
+1/1/2002,2002,40.36,Other
+1/1/2003,2003,43.83,Other
+1/1/2004,2004,47.92,Other
+1/1/2005,2005,50.84,Other
+1/1/2006,2006,55.03,Other
+1/1/2007,2007,59.53,Other
+1/1/2008,2008,62.61,Other
+1/1/2009,2009,66.7,Other
+1/1/2010,2010,69.07,Other
+1/1/2011,2011,74.46,Other
+1/1/2012,2012,77.55,Other
+1/1/2013,2013,78.89,Other
+1/1/2014,2014,82.55,Other
+1/1/2015,2015*,86.39,Other
+1/1/2016,2016*,93.74,Other
+1/1/2017,2017*,95.06,Other
+1/1/2018,2018*,98.07,Other
+1/1/2019,2019*,103.26,Other
+1/1/2000,2000,32.57,Other
+1/1/2001,2001,10.86,Diseases of the blood and blood-forming organs
+1/1/2002,2002,12.44,Diseases of the blood and blood-forming organs
+1/1/2003,2003,14.31,Diseases of the blood and blood-forming organs
+1/1/2004,2004,15.37,Diseases of the blood and blood-forming organs
+1/1/2005,2005,16.28,Diseases of the blood and blood-forming organs
+1/1/2006,2006,17.38,Diseases of the blood and blood-forming organs
+1/1/2007,2007,18.18,Diseases of the blood and blood-forming organs
+1/1/2008,2008,18.27,Diseases of the blood and blood-forming organs
+1/1/2009,2009,19.4,Diseases of the blood and blood-forming organs
+1/1/2010,2010,20.23,Diseases of the blood and blood-forming organs
+1/1/2011,2011,22.55,Diseases of the blood and blood-forming organs
+1/1/2012,2012,23.33,Diseases of the blood and blood-forming organs
+1/1/2013,2013,23.27,Diseases of the blood and blood-forming organs
+1/1/2014,2014,23.99,Diseases of the blood and blood-forming organs
+1/1/2015,2015*,24.83,Diseases of the blood and blood-forming organs
+1/1/2016,2016*,24.7,Diseases of the blood and blood-forming organs
+1/1/2017,2017*,25.53,Diseases of the blood and blood-forming organs
+1/1/2018,2018*,26.3,Diseases of the blood and blood-forming organs
+1/1/2019,2019*,28.09,Diseases of the blood and blood-forming organs
+1/1/2000,2000,9.36,Diseases of the blood and blood-forming organs
+1/1/2001,2001,4.85,Congenital anomalies
+1/1/2002,2002,5.08,Congenital anomalies
+1/1/2003,2003,5.44,Congenital anomalies
+1/1/2004,2004,5.68,Congenital anomalies
+1/1/2005,2005,5.8,Congenital anomalies
+1/1/2006,2006,6.01,Congenital anomalies
+1/1/2007,2007,6.39,Congenital anomalies
+1/1/2008,2008,7.12,Congenital anomalies
+1/1/2009,2009,7.43,Congenital anomalies
+1/1/2010,2010,7.66,Congenital anomalies
+1/1/2011,2011,7.85,Congenital anomalies
+1/1/2012,2012,7.91,Congenital anomalies
+1/1/2013,2013,8.12,Congenital anomalies
+1/1/2014,2014,8.23,Congenital anomalies
+1/1/2015,2015*,8.4,Congenital anomalies
+1/1/2016,2016*,8.47,Congenital anomalies
+1/1/2017,2017*,7.72,Congenital anomalies
+1/1/2018,2018*,8.33,Congenital anomalies
+1/1/2019,2019*,8.61,Congenital anomalies
+1/1/2000,2000,4.72,Congenital anomalies
+1/1/2001,2001,5.08,Certain conditions originating in the perinatal period
+1/1/2002,2002,5.01,Certain conditions originating in the perinatal period
+1/1/2003,2003,5.42,Certain conditions originating in the perinatal period
+1/1/2004,2004,6.07,Certain conditions originating in the perinatal period
+1/1/2005,2005,5.85,Certain conditions originating in the perinatal period
+1/1/2006,2006,5.7,Certain conditions originating in the perinatal period
+1/1/2007,2007,6.06,Certain conditions originating in the perinatal period
+1/1/2008,2008,6.77,Certain conditions originating in the perinatal period
+1/1/2009,2009,7.34,Certain conditions originating in the perinatal period
+1/1/2010,2010,6.85,Certain conditions originating in the perinatal period
+1/1/2011,2011,7.58,Certain conditions originating in the perinatal period
+1/1/2012,2012,7.67,Certain conditions originating in the perinatal period
+1/1/2013,2013,8.38,Certain conditions originating in the perinatal period
+1/1/2014,2014,8.49,Certain conditions originating in the perinatal period
+1/1/2015,2015*,7.85,Certain conditions originating in the perinatal period
+1/1/2016,2016*,10.52,Certain conditions originating in the perinatal period
+1/1/2017,2017*,11.98,Certain conditions originating in the perinatal period
+1/1/2018,2018*,11.89,Certain conditions originating in the perinatal period
+1/1/2019,2019*,11.58,Certain conditions originating in the perinatal period
+1/1/2000,2000,4.87,Certain conditions originating in the perinatal period
+1/1/2001,2001,15.33,Residual codes; unclassified; all E codes
+1/1/2002,2002,17.83,Residual codes; unclassified; all E codes
+1/1/2003,2003,18.66,Residual codes; unclassified; all E codes
+1/1/2004,2004,20.81,Residual codes; unclassified; all E codes
+1/1/2005,2005,22.9,Residual codes; unclassified; all E codes
+1/1/2006,2006,25.95,Residual codes; unclassified; all E codes
+1/1/2007,2007,28.9,Residual codes; unclassified; all E codes
+1/1/2008,2008,30.45,Residual codes; unclassified; all E codes
+1/1/2009,2009,32.53,Residual codes; unclassified; all E codes
+1/1/2010,2010,34.32,Residual codes; unclassified; all E codes
+1/1/2011,2011,36.47,Residual codes; unclassified; all E codes
+1/1/2012,2012,38.65,Residual codes; unclassified; all E codes
+1/1/2013,2013,39.11,Residual codes; unclassified; all E codes
+1/1/2014,2014,41.84,Residual codes; unclassified; all E codes
+1/1/2015,2015*,45.3,Residual codes; unclassified; all E codes
+1/1/2016,2016*,50.05,Residual codes; unclassified; all E codes
+1/1/2017,2017*,49.83,Residual codes; unclassified; all E codes
+1/1/2018,2018*,51.54,Residual codes; unclassified; all E codes
+1/1/2019,2019*,54.98,Residual codes; unclassified; all E codes
+1/1/2000,2000,13.62,Residual codes; unclassified; all E codes
+1/1/2001,2001,162.98,Medical services by provider
+1/1/2002,2002,174.18,Medical services by provider
+1/1/2003,2003,183.47,Medical services by provider
+1/1/2004,2004,195.04,Medical services by provider
+1/1/2005,2005,206.84,Medical services by provider
+1/1/2006,2006,215.69,Medical services by provider
+1/1/2007,2007,230.8,Medical services by provider
+1/1/2008,2008,243.33,Medical services by provider
+1/1/2009,2009,250.04,Medical services by provider
+1/1/2010,2010,259.55,Medical services by provider
+1/1/2011,2011,263.71,Medical services by provider
+1/1/2012,2012,268.29,Medical services by provider
+1/1/2013,2013,271.86,Medical services by provider
+1/1/2014,2014,279.56,Medical services by provider
+1/1/2015,2015*,289.45,Medical services by provider
+1/1/2016,2016*,302.09,Medical services by provider
+1/1/2017,2017*,310.02,Medical services by provider
+1/1/2018,2018*,321.03,Medical services by provider
+1/1/2019,2019*,333.93,Medical services by provider
+1/1/2000,2000,151.48,Medical services by provider
+1/1/2001,2001,69.32,Dental services
+1/1/2002,2002,75.57,Dental services
+1/1/2003,2003,77.82,Dental services
+1/1/2004,2004,83.28,Dental services
+1/1/2005,2005,87.87,Dental services
+1/1/2006,2006,91.5,Dental services
+1/1/2007,2007,96.99,Dental services
+1/1/2008,2008,101.75,Dental services
+1/1/2009,2009,102.05,Dental services
+1/1/2010,2010,104.46,Dental services
+1/1/2011,2011,105.8,Dental services
+1/1/2012,2012,107.16,Dental services
+1/1/2013,2013,108.65,Dental services
+1/1/2014,2014,111.57,Dental services
+1/1/2015,2015*,116.34,Dental services
+1/1/2016,2016*,122.57,Dental services
+1/1/2017,2017*,127.52,Dental services
+1/1/2018,2018*,133.93,Dental services
+1/1/2019,2019*,139.7,Dental services
+1/1/2000,2000,63.57,Dental services
+1/1/2001,2001,93.66,Nursing homes
+1/1/2002,2002,98.61,Nursing homes
+1/1/2003,2003,105.66,Nursing homes
+1/1/2004,2004,111.76,Nursing homes
+1/1/2005,2005,118.97,Nursing homes
+1/1/2006,2006,124.18,Nursing homes
+1/1/2007,2007,133.81,Nursing homes
+1/1/2008,2008,141.58,Nursing homes
+1/1/2009,2009,147.99,Nursing homes
+1/1/2010,2010,155.1,Nursing homes
+1/1/2011,2011,157.91,Nursing homes
+1/1/2012,2012,161.13,Nursing homes
+1/1/2013,2013,163.22,Nursing homes
+1/1/2014,2014,168,Nursing homes
+1/1/2015,2015*,173.11,Nursing homes
+1/1/2016,2016*,179.52,Nursing homes
+1/1/2017,2017*,182.51,Nursing homes
+1/1/2018,2018*,187.1,Nursing homes
+1/1/2019,2019*,194.22,Nursing homes
+1/1/2000,2000,87.91,Nursing homes
+1/1/2001,2001,60.09,Proprietary and government nursing homes
+1/1/2002,2002,63.18,Proprietary and government nursing homes
+1/1/2003,2003,67.7,Proprietary and government nursing homes
+1/1/2004,2004,71.85,Proprietary and government nursing homes
+1/1/2005,2005,75.95,Proprietary and government nursing homes
+1/1/2006,2006,79.56,Proprietary and government nursing homes
+1/1/2007,2007,86.29,Proprietary and government nursing homes
+1/1/2008,2008,92.82,Proprietary and government nursing homes
+1/1/2009,2009,96.74,Proprietary and government nursing homes
+1/1/2010,2010,102.36,Proprietary and government nursing homes
+1/1/2011,2011,104.06,Proprietary and government nursing homes
+1/1/2012,2012,106.44,Proprietary and government nursing homes
+1/1/2013,2013,108.22,Proprietary and government nursing homes
+1/1/2014,2014,112.3,Proprietary and government nursing homes
+1/1/2015,2015*,117.06,Proprietary and government nursing homes
+1/1/2016,2016*,121.5,Proprietary and government nursing homes
+1/1/2017,2017*,123.6,Proprietary and government nursing homes
+1/1/2018,2018*,127.81,Proprietary and government nursing homes
+1/1/2019,2019*,133.43,Proprietary and government nursing homes
+1/1/2000,2000,56.85,Proprietary and government nursing homes
+1/1/2001,2001,33.57,Nonprofit nursing homes services to households
+1/1/2002,2002,35.44,Nonprofit nursing homes services to households
+1/1/2003,2003,37.96,Nonprofit nursing homes services to households
+1/1/2004,2004,39.91,Nonprofit nursing homes services to households
+1/1/2005,2005,43.02,Nonprofit nursing homes services to households
+1/1/2006,2006,44.62,Nonprofit nursing homes services to households
+1/1/2007,2007,47.52,Nonprofit nursing homes services to households
+1/1/2008,2008,48.76,Nonprofit nursing homes services to households
+1/1/2009,2009,51.25,Nonprofit nursing homes services to households
+1/1/2010,2010,52.73,Nonprofit nursing homes services to households
+1/1/2011,2011,53.85,Nonprofit nursing homes services to households
+1/1/2012,2012,54.69,Nonprofit nursing homes services to households
+1/1/2013,2013,55,Nonprofit nursing homes services to households
+1/1/2014,2014,55.7,Nonprofit nursing homes services to households
+1/1/2015,2015*,56.05,Nonprofit nursing homes services to households
+1/1/2016,2016*,58.01,Nonprofit nursing homes services to households
+1/1/2017,2017*,58.91,Nonprofit nursing homes services to households
+1/1/2018,2018*,59.28,Nonprofit nursing homes services to households
+1/1/2019,2019*,60.79,Nonprofit nursing homes services to households
+1/1/2000,2000,31.06,Nonprofit nursing homes services to households
+1/1/2001,2001,57.89,"Medical products, appliances and equipment"
+1/1/2002,2002,61.95,"Medical products, appliances and equipment"
+1/1/2003,2003,66.82,"Medical products, appliances and equipment"
+1/1/2004,2004,72.47,"Medical products, appliances and equipment"
+1/1/2005,2005,78.7,"Medical products, appliances and equipment"
+1/1/2006,2006,85.56,"Medical products, appliances and equipment"
+1/1/2007,2007,93.38,"Medical products, appliances and equipment"
+1/1/2008,2008,96.53,"Medical products, appliances and equipment"
+1/1/2009,2009,98.29,"Medical products, appliances and equipment"
+1/1/2010,2010,104.22,"Medical products, appliances and equipment"
+1/1/2011,2011,110.86,"Medical products, appliances and equipment"
+1/1/2012,2012,116.2,"Medical products, appliances and equipment"
+1/1/2013,2013,120.21,"Medical products, appliances and equipment"
+1/1/2014,2014,124.53,"Medical products, appliances and equipment"
+1/1/2015,2015*,130.98,"Medical products, appliances and equipment"
+1/1/2016,2016*,135.53,"Medical products, appliances and equipment"
+1/1/2017,2017*,140.13,"Medical products, appliances and equipment"
+1/1/2018,2018*,146.08,"Medical products, appliances and equipment"
+1/1/2019,2019*,152.76,"Medical products, appliances and equipment"
+1/1/2000,2000,57.36,"Medical products, appliances and equipment"
+1/1/2001,2001,26.06,Pharmaceutical and other medical products
+1/1/2002,2002,27.91,Pharmaceutical and other medical products
+1/1/2003,2003,30.34,Pharmaceutical and other medical products
+1/1/2004,2004,32.72,Pharmaceutical and other medical products
+1/1/2005,2005,35.51,Pharmaceutical and other medical products
+1/1/2006,2006,38.67,Pharmaceutical and other medical products
+1/1/2007,2007,41.74,Pharmaceutical and other medical products
+1/1/2008,2008,45.31,Pharmaceutical and other medical products
+1/1/2009,2009,47.64,Pharmaceutical and other medical products
+1/1/2010,2010,51.82,Pharmaceutical and other medical products
+1/1/2011,2011,56.57,Pharmaceutical and other medical products
+1/1/2012,2012,61.21,Pharmaceutical and other medical products
+1/1/2013,2013,63.18,Pharmaceutical and other medical products
+1/1/2014,2014,65.52,Pharmaceutical and other medical products
+1/1/2015,2015*,69.27,Pharmaceutical and other medical products
+1/1/2016,2016*,71.88,Pharmaceutical and other medical products
+1/1/2017,2017*,74.51,Pharmaceutical and other medical products
+1/1/2018,2018*,77.49,Pharmaceutical and other medical products
+1/1/2019,2019*,81.1,Pharmaceutical and other medical products
+1/1/2000,2000,25.19,Pharmaceutical and other medical products
+1/1/2001,2001,24,Pharmaceutical products (without prescription drugs)
+1/1/2002,2002,25.74,Pharmaceutical products (without prescription drugs)
+1/1/2003,2003,27.94,Pharmaceutical products (without prescription drugs)
+1/1/2004,2004,29.99,Pharmaceutical products (without prescription drugs)
+1/1/2005,2005,32.5,Pharmaceutical products (without prescription drugs)
+1/1/2006,2006,35.28,Pharmaceutical products (without prescription drugs)
+1/1/2007,2007,37.97,Pharmaceutical products (without prescription drugs)
+1/1/2008,2008,41.48,Pharmaceutical products (without prescription drugs)
+1/1/2009,2009,43.86,Pharmaceutical products (without prescription drugs)
+1/1/2010,2010,47.82,Pharmaceutical products (without prescription drugs)
+1/1/2011,2011,52.35,Pharmaceutical products (without prescription drugs)
+1/1/2012,2012,56.67,Pharmaceutical products (without prescription drugs)
+1/1/2013,2013,58.43,Pharmaceutical products (without prescription drugs)
+1/1/2014,2014,60.56,Pharmaceutical products (without prescription drugs)
+1/1/2015,2015*,63.94,Pharmaceutical products (without prescription drugs)
+1/1/2016,2016*,66.24,Pharmaceutical products (without prescription drugs)
+1/1/2017,2017*,68.68,Pharmaceutical products (without prescription drugs)
+1/1/2018,2018*,71.37,Pharmaceutical products (without prescription drugs)
+1/1/2019,2019*,74.66,Pharmaceutical products (without prescription drugs)
+1/1/2000,2000,23.24,Pharmaceutical products (without prescription drugs)
+1/1/2001,2001,24,Nonprescription drugs
+1/1/2002,2002,25.74,Nonprescription drugs
+1/1/2003,2003,27.94,Nonprescription drugs
+1/1/2004,2004,29.99,Nonprescription drugs
+1/1/2005,2005,32.5,Nonprescription drugs
+1/1/2006,2006,35.28,Nonprescription drugs
+1/1/2007,2007,37.97,Nonprescription drugs
+1/1/2008,2008,41.48,Nonprescription drugs
+1/1/2009,2009,43.86,Nonprescription drugs
+1/1/2010,2010,47.82,Nonprescription drugs
+1/1/2011,2011,52.35,Nonprescription drugs
+1/1/2012,2012,56.67,Nonprescription drugs
+1/1/2013,2013,58.43,Nonprescription drugs
+1/1/2014,2014,60.56,Nonprescription drugs
+1/1/2015,2015*,63.94,Nonprescription drugs
+1/1/2016,2016*,66.24,Nonprescription drugs
+1/1/2017,2017*,68.68,Nonprescription drugs
+1/1/2018,2018*,71.37,Nonprescription drugs
+1/1/2019,2019*,74.66,Nonprescription drugs
+1/1/2000,2000,23.24,Nonprescription drugs
+1/1/2001,2001,2.06,Other medical products
+1/1/2002,2002,2.17,Other medical products
+1/1/2003,2003,2.4,Other medical products
+1/1/2004,2004,2.74,Other medical products
+1/1/2005,2005,3.01,Other medical products
+1/1/2006,2006,3.39,Other medical products
+1/1/2007,2007,3.77,Other medical products
+1/1/2008,2008,3.83,Other medical products
+1/1/2009,2009,3.79,Other medical products
+1/1/2010,2010,4,Other medical products
+1/1/2011,2011,4.21,Other medical products
+1/1/2012,2012,4.54,Other medical products
+1/1/2013,2013,4.75,Other medical products
+1/1/2014,2014,4.96,Other medical products
+1/1/2015,2015*,5.33,Other medical products
+1/1/2016,2016*,5.63,Other medical products
+1/1/2017,2017*,5.84,Other medical products
+1/1/2018,2018*,6.12,Other medical products
+1/1/2019,2019*,6.44,Other medical products
+1/1/2000,2000,1.95,Other medical products
+1/1/2001,2001,31.83,Therapeutic appliances and equipment
+1/1/2002,2002,34.04,Therapeutic appliances and equipment
+1/1/2003,2003,36.49,Therapeutic appliances and equipment
+1/1/2004,2004,39.74,Therapeutic appliances and equipment
+1/1/2005,2005,43.19,Therapeutic appliances and equipment
+1/1/2006,2006,46.9,Therapeutic appliances and equipment
+1/1/2007,2007,51.64,Therapeutic appliances and equipment
+1/1/2008,2008,51.22,Therapeutic appliances and equipment
+1/1/2009,2009,50.65,Therapeutic appliances and equipment
+1/1/2010,2010,52.4,Therapeutic appliances and equipment
+1/1/2011,2011,54.29,Therapeutic appliances and equipment
+1/1/2012,2012,54.99,Therapeutic appliances and equipment
+1/1/2013,2013,57.03,Therapeutic appliances and equipment
+1/1/2014,2014,59.01,Therapeutic appliances and equipment
+1/1/2015,2015*,61.71,Therapeutic appliances and equipment
+1/1/2016,2016*,63.65,Therapeutic appliances and equipment
+1/1/2017,2017*,65.61,Therapeutic appliances and equipment
+1/1/2018,2018*,68.58,Therapeutic appliances and equipment
+1/1/2019,2019*,71.66,Therapeutic appliances and equipment
+1/1/2000,2000,32.17,Therapeutic appliances and equipment
+1/1/2001,2001,18.8,Corrective eyeglasses and contact lenses
+1/1/2002,2002,20.26,Corrective eyeglasses and contact lenses
+1/1/2003,2003,21.1,Corrective eyeglasses and contact lenses
+1/1/2004,2004,22.2,Corrective eyeglasses and contact lenses
+1/1/2005,2005,23.77,Corrective eyeglasses and contact lenses
+1/1/2006,2006,24.91,Corrective eyeglasses and contact lenses
+1/1/2007,2007,27.11,Corrective eyeglasses and contact lenses
+1/1/2008,2008,27.46,Corrective eyeglasses and contact lenses
+1/1/2009,2009,28.24,Corrective eyeglasses and contact lenses
+1/1/2010,2010,29.84,Corrective eyeglasses and contact lenses
+1/1/2011,2011,31.61,Corrective eyeglasses and contact lenses
+1/1/2012,2012,31.62,Corrective eyeglasses and contact lenses
+1/1/2013,2013,32.61,Corrective eyeglasses and contact lenses
+1/1/2014,2014,33.51,Corrective eyeglasses and contact lenses
+1/1/2015,2015*,34.29,Corrective eyeglasses and contact lenses
+1/1/2016,2016*,34.68,Corrective eyeglasses and contact lenses
+1/1/2017,2017*,35.61,Corrective eyeglasses and contact lenses
+1/1/2018,2018*,37.1,Corrective eyeglasses and contact lenses
+1/1/2019,2019*,38.54,Corrective eyeglasses and contact lenses
+1/1/2000,2000,19.91,Corrective eyeglasses and contact lenses
+1/1/2001,2001,13.03,Therapeutic medical equipment
+1/1/2002,2002,13.78,Therapeutic medical equipment
+1/1/2003,2003,15.39,Therapeutic medical equipment
+1/1/2004,2004,17.54,Therapeutic medical equipment
+1/1/2005,2005,19.42,Therapeutic medical equipment
+1/1/2006,2006,21.99,Therapeutic medical equipment
+1/1/2007,2007,24.53,Therapeutic medical equipment
+1/1/2008,2008,23.76,Therapeutic medical equipment
+1/1/2009,2009,22.4,Therapeutic medical equipment
+1/1/2010,2010,22.56,Therapeutic medical equipment
+1/1/2011,2011,22.69,Therapeutic medical equipment
+1/1/2012,2012,23.37,Therapeutic medical equipment
+1/1/2013,2013,24.42,Therapeutic medical equipment
+1/1/2014,2014,25.5,Therapeutic medical equipment
+1/1/2015,2015*,27.42,Therapeutic medical equipment
+1/1/2016,2016*,28.97,Therapeutic medical equipment
+1/1/2017,2017*,30,Therapeutic medical equipment
+1/1/2018,2018*,31.49,Therapeutic medical equipment
+1/1/2019,2019*,33.12,Therapeutic medical equipment
+1/1/2000,2000,12.26,Therapeutic medical equipment

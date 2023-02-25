@@ -1,0 +1,124 @@
+<h3 align="center">University of North Carolina at Greensboro</h3>
+
+
+
+
+<h1 align="center">Using News Sentiment & Social Media Opinions to Drive Stock Investment Decisions</h1>
+
+
+
+
+
+<h2 align="center">A PROJECT REPORT</h2>
+
+
+
+
+<p align="center">Submitted By</p>
+
+
+
+
+<h2 align="center">Mojeed Abisiga</h2>
+
+
+
+
+<h4 align="center">UNDER THE SUPERVISION OF</h4>
+
+
+
+<h3 align="center">Aaron Beveridge</h3>
+
+
+
+
+
+
+
+<h4 align="center">DEPARTMENT OF INFORMATICS AND ANALYTICS</h4>
+
+
+
+<p align="center">DECEMBER 2022</p>
+
+
+---
+title: "Using News Sentiment & Social Media Opinions to Drive Stock Investment Decisions"
+author: "Mojeed Abisiga"
+output:pdf_document
+---
+
+
+
+---
+title: "Mojeed_Abisiga_IAL620_Project_Report"
+author: "Mojeed Abisiga"
+date: "2022-12-04"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Abstract
+
+
+
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+
+
+```
+
+
+
+```{r echo=FALSE, message=FALSE}
+
+
+
+```
+
+
+
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(tidyr)
+library(forcats)
+library(textdata)
+library(scales)
+library(wordcloud)
+library(reshape2)
+library(lubridate)
+library(readr)
+library(forcats)
+library(stringr)
+library(tidymodels)
+library(httr)
+library(purrr)
+library(rvest)
+# R package for managing and analyzing textual data
+library(quanteda)
+# An R package with word stemming algorithm
+# collapsing words to a common root to aid comparison of vocabular. 
+library(SnowballC)
+# library for topic models (LDA)
+library(topicmodels)
+# text recipe
+library(textrecipes)
+# dealing with imbalance data using `step_downsample or upsample`.
+library(themis)
+# https://github.com/tidymodels/discrim
+library(discrim)
+# framework for constructing variable importance plots from ML models
+library(vip)
+
+library(igraph)
+library(ggraph)
