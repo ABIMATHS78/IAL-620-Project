@@ -1,0 +1,810 @@
+---
+title: "**Using News Sentiments, Social Media Opinions & Other Companies’ Data to Drive Stock Investment Decisions**"
+author: "Mojeed Abisiga"
+date: "December 2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Abstract
+
+The world of investment in companies' stocks has always been data-driven, accurate information and analysis underpins every decision made about market fluctuations. In fact, the very nature of this analysis is always changing as new data sources, practices, and insights become available. It is a known fact that every data source can offer investors a competitive edge. For example, analyzing foot data can quickly identify increase or decrease in demand throughout the day; this can help investors understand when these kinds of business are either hitting or missing sales goals.
+
+In view of these, it will be of very big value if investors or potential investors in companies' equity or stocks can visit a one-stop shop to get relevant data, information or insights that can be used in making decisions on the kind of investments they should do or specific companies to focus their investment on. The kind of information that will be of great value to investors include industry and sector of the companies, Company Details (company locations, employee counts, top officers within the company, noteworthy customers etc.), Company Financials (stock prices, market cap, key operating data from financial statements like cash flows, long term debt, capital expenditure, operating expenses, revenue, etc.), Company Sentiments (companieskey news and news sentiment, social media sentiments and topic modelling), other key visualizations & comparative analytics (revenue by location, sector breakdowns, side-by-side comparison between sectors based on KPIs, comparing industries).
+
+# Methods
+
+## Primary Sources of Data:
+
+The focus for this study was Fortune 500 companies, primarily organizations that are key players in 3 major sectors - Energy, Financial Services, and Technology.Our use case was a deep dive on thirty (30) organizations, spread across these 3 different sectors, with 10 organizations considered per sector.
+
+This case study utilized 2 main data sources which are Stock Analysis, and Twitter. For the Stock Analysis website, the first step that was taken is identifying the required KPIs to solve this problem for stock investors, after which some research was done to find relevant data sources for these KPIs. Also, appropriate measures were taken in verifying from Stock Analysis website's for the terms of Use of the page, to ensure that the data was available for commercial use and if scraping is allowed. The organizations that were considered are:
+
+**Financial Services:**
+
+-   JPMorgan Chase & Co.
+-   Mastercard
+-   HSBC Holdings PLC
+-   Lloyds Banking Group
+-   Barclays
+-   American International Group
+-   Canadian Imperial Bank of Commerce
+-   American Express
+-   The Goldman Sachs Group
+-   Bank of America
+
+**Technology:**
+
+-   VMware
+-   Atlassian
+-   Amazon
+-   Apple
+-   Broadcom Inc.
+-   Adobe
+-   Nokia
+-   Dell
+-   Autodesk
+-   Shopify
+
+**Financial Services:**
+
+-   Duke Energy Corporation
+-   DTE Energy Company
+-   Shell
+-   Exxon Mobil
+-   BP
+-   Hess Corporation
+-   Marathon Oil Corporation
+-   Ecopetrol S.A.
+-   PetroChina Co. Ltd.
+-   Schlumberger
+
+## Data Points Scrapped or Generated For Analysis:
+
+**Company Details:** Name of Company, number of Employees, industry, sector, year company was founded, name of CEO.
+
+**Company Financials:** Shares Outstanding, revenue, net income, stock prices, capital expenditure, market capitalization, long-term debt, and common stock value
+
+**Company Sentiment:** Analyst sentiments, noteworthy news updates, news sentiments.
+
+**Social Media:** Tweets, number of likes, number of retweets, date, location, author of tweet, number of followers, popularity of tweet, relevance of tweet.
+
+Data extraction from Stock Analysis was achieved with R while that from Twitter was achieved with Python. Collected only tweets that span a period of past 2 weeks from when the studies were conducted because of Twitter API free access limitation. In addition, the stock data is a highly volatile data; the market deals with a high level of fluctuation, so it was only reasonable to use news or tweets that were very recent for our studies. The Twitter handle of these companies were used to extract the recent tweets made by twitter users in response to these companies or talking the companies, for companies who didn't have official handles the most unique word or phrase that descibe the company was used to query the Twitter for tweets about these companies. The extracted data was afterwards, transformed into a more usable format. The scraping from Stock Analysis was done using rvest library after getting the xpath selectors for each of the data points needed right.
+
+A number of Natural Language Processing (NLP) techniques were used in this study, some of which were Sentiment Analysis, Topic Modelling, N-grams, TF-IDF, and Text Data Wrangling.
+
+Some of the libraries used in R include tidyverse, tidytext, ggplot2, tidyr, forcats, textdata, scales, wordcloud, stringr, tidymodels, httr, purrr, rvest, quanteda, ggraph, igraph, among many others. While some of the libraries used in Python include tweepy, vaderSentiment, unicode, urllib3, pandas, datetime, and numpy
+
+The tweets gotten from Python were exported in CSV file format and then ingested into R where all other analysis and visualizations were done.
+
+# Results
+
+```{r Libraries, include=FALSE, message=FALSE}
+
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(tidyr)
+library(forcats)
+library(textdata)
+library(scales)
+library(wordcloud)
+library(reshape2)
+library(lubridate)
+library(readr)
+library(forcats)
+library(stringr)
+library(tidymodels)
+library(httr)
+library(purrr)
+library(rvest)
+# R package for managing and analyzing textual data
+library(quanteda)
+# An R package with word stemming algorithm
+# collapsing words to a common root to aid comparison of vocabular. 
+library(SnowballC)
+# library for topic models (LDA)
+library(topicmodels)
+# text recipe
+library(textrecipes)
+# dealing with imbalance data using `step_downsample or upsample`.
+library(themis)
+# https://github.com/tidymodels/discrim
+library(discrim)
+# framework for constructing variable importance plots from ML models
+library(vip)
+
+library(igraph)
+library(ggraph)
+
+```
+
+```{r Global knitr Setup, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
+
+knitr::opts_chunk$set(
+	#Chunk Code Options
+	echo = FALSE, # Show the code in the output
+	include = TRUE, # Show the results in the output.
+	
+	message = FALSE, # messages generated from code are not shown.
+	warning = FALSE, # warnings generated from code are not shown.
+	
+	results = 'asis', # no additional formatting is applied to the results
+	comment = NA, 
+	
+	# don't add the prompt character in R Code, i.e., 
+	# don't stop to ask the user for execution
+	prompt = FALSE, 	
+	
+	# Plot Options - set the width and height (in inches) of all plots generated.
+	#fig.height = 6,
+	#fig.width = 8,
+	# 
+	# fig.retina only applies to html output 
+	# controls the quality (dpi) of the image.
+	fig.retina = 2,
+	
+	# default alignment of all figures.
+	fig.align = 'center'
+)
+
+# round all decimals to 4 digits (after the decimal),
+# unless specified otherwise in the local options. 
+options(digits = 4)
+
+```
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+# read in csv file as tibble/data frame
+scrape.data <- read.csv(file='stockdata.csv', stringsAsFactors=FALSE)
+
+clean.data <- as_tibble(scrape.data)
+
+# transform table into one-word-per-line tidytext format
+clean.data <- clean.data %>%
+  unnest_tokens(word, Top.News)
+
+
+# most frequent words
+clean.data %>%
+  count(word, sort = TRUE)
+
+
+clean.data2 <- clean.data$Company.Name
+full_stop_words <- c(lapply(list(clean.data2), tolower), list(c("cloud", "7", "2", "3", "hsbc", "dell", "bp", "dte", "aig", "duke", "amazon", "exxon", "hess", "petrochina", "sachs", "lloyds", "bcs", "cm", "nokia", "atlassian", "autodesk", "vmware", "slb", "shell", "schlumberger", "ecopetrol", "barclays", "exxonmobil", "adobe", "apple", "broadcom", "chevron", "s.a", "mro", "shopify", "mastercard", "mobil")))
+
+custom_stop_words <- bind_rows(tibble(word = unlist(full_stop_words),  
+                                      lexicon = c("custom")), 
+                               stop_words)
+
+# remove stop words
+data(stop_words)
+clean.data <- clean.data %>%
+  anti_join(custom_stop_words)
+
+# check result of stop word removal
+clean.data %>%
+  count(word, sort = TRUE)
+
+
+# remove numbers
+nums <- clean.data %>% 
+  filter(str_detect(word, "^[0-9]")) %>% 
+  select(word) %>% 
+  unique()
+
+clean.data <- clean.data %>%
+  anti_join(nums, by = "word")
+
+# check result of numbers removal
+clean.data %>%
+  count(word, sort = TRUE)
+
+str(clean.data)
+
+# remove other words
+uni_sw <- data.frame(word = sapply(scrape.data$Sector, tolower))
+
+# sapply(scrape.data$Company.Name, singularize(dictionary = TRUE)))
+
+
+clean.data <- clean.data %>%
+  anti_join(uni_sw, by = "word")
+
+
+# check result of other words removal
+clean.data %>%
+  count(word, sort = TRUE)
+	
+
+```
+
+**Most Frequent words in the News**
+
+```{r echo=FALSE, message=FALSE}
+
+# visualize top words in corpus (For all News)
+clean.data %>%
+  count(word, sort = TRUE) %>%
+  filter(n >= 20) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+```
+
+From the figure above, it can be seen that all news about the companies used in the case study were mostly around stocks, earnings, shares, investors, dividend, which is very much expected since we got the news from stock analysis website. The **q3** indicates that news are kind of centered around the current quarter (third quarter) of the financial year of most companies. The oil companies must be really talked about for it to appear at the top of the chart.
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+clean.data <- clean.data %>% 
+  filter(Sector %in% c("Financial Services", "Technology", "Energy"))
+
+frequency <- clean.data %>% 
+  count(Sector, word) %>%
+  group_by(Sector) %>% 
+  mutate(proportion = n / sum(n)) %>% 
+  select(-n) %>% 
+  pivot_wider(names_from = Sector, values_from = proportion) 
+
+frequency <- frequency %>% 
+  pivot_longer(`Financial Services`:`Technology`,
+               names_to = "Sector", values_to = "proportion")
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+# expect a warning about rows with missing values being removed
+ggplot(frequency, aes(x = proportion, y = `Energy`, 
+                      color = abs(`Energy` - proportion))) +
+  geom_abline(color = "gray40", lty = 2) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  scale_color_gradient(limits = c(0, 0.001), 
+                       low = "darkslategray4", high = "gray75") +
+  facet_wrap(~Sector, ncol = 2) +
+  theme(legend.position="none") +
+  labs(y = "Energy", 
+       x = "Proportion of Word",
+       title = "Comparing the Word Frequencies of 3 Different Sectors")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+cor.test(data = frequency[frequency$Sector == "Financial Services",],
+         ~ proportion + `Energy`)
+
+cor.test(data = frequency[frequency$Sector == "Technology",],
+         ~ proportion + `Energy`)
+
+```
+
+
+Since after comparing the three different sectors in terms of their News sentiments, it was found that the Energy sector had the most positive and least negative sentiments, we decided to compare the words used other sectors news to the words used in the Energy sector news. The words close to the line in the figure above similar frequencies in the news of both sectors. As it can be seen, words like market, investment, dividend, and accelerates had high frequencies in news for both Energy and Financial Services sectors, while words like accelerates, investors, betting, ahead, stock, among many others had high frequencies in news for both Energy and Technology sectors. Words like oil are strictly for Energy sector as expected, and words like bank are mostly used in the Financial Services line. One other interesting thing that can be seen from the chart above is that the news from the Energy sector had more common words in use when compared to the news from the Technology sector than when compared to the news from the Financial Services sector. The Pearson's product moment correlation values comfirms this; that computed for Energy aand Technology was 0.861, while the one computed for Energy and Financial Services was 0.6207.
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+clean.data2 <- as_tibble(scrape.data)
+
+
+
+clean.data2 <- clean.data2 %>%
+  unnest_tokens(word, Top.News) %>%
+  count(Sector, word, sort = TRUE)
+
+# remove stop words
+data(stop_words)
+clean.data2 <- clean.data2 %>%
+  anti_join(custom_stop_words)
+
+
+total_words <- clean.data2 %>% 
+  group_by(Sector) %>% 
+  summarize(total = sum(n))
+
+
+company_words <- left_join(clean.data2, total_words)
+
+company_tf_idf <- company_words %>%
+  bind_tf_idf(word, Sector, n)
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+company_tf_idf %>%
+  group_by(Sector) %>%
+  slice_max(tf_idf, n = 8) %>%
+  ungroup() %>%
+  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = Sector)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(.~Sector, ncol = 2, scales = "free") +
+  labs(x = "tf-idf", 
+       y = "word",
+       title = "Important Words in News Sentiments For Each Sector")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+
+From the chart above, it can be seen that the Technology Sector news consist mostly of words like tech, technologies, iphone, software which are words that are closely associated with the Technogy sector. And for Energy Sector, words like energy, oil, power appeared more often, which are also expected. The news from the Financial Services were centred around words used in that domain too, words like shareholder, bank, express, among many others.
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+get_sentiments("bing")
+
+# read in csv file as tibble/data frame
+sentiment.data <- read.csv(file='sentiment_tweets.csv', stringsAsFactors=FALSE)
+
+sentiment.data2 <- as_tibble(sentiment.data)
+
+
+tweetsTMDF <-read.csv("sentiment_tweets.csv", encoding = "UTF-8")
+
+### UDF to remove the URLs from the tweets
+removeURLs <- function(tweet) {
+  return(gsub("http\\S+", "", tweet))
+}
+
+#"^RT @[a-z,A-Z]*[0-9]*[a-z,A-Z]*[0-9]*: "
+
+### UDF to remove RT from the tweets
+removeUsernamesWithRT <- function(tweet) {
+  return(gsub("(RT|via)((?:\\b\\W*@\\w+)+):","", tweet))
+}
+### UDF to remove the usernames or callouts from the tweets
+removeUsernames <- function(tweet) {
+  return(gsub("@[a-z,A-Z]*[0-9]*[a-z,A-Z]*[0-9]*", "", tweet))
+}
+### remove the hashtag # from the tweets
+removeHashtagSignOnly <- function(tweet) {
+  return(gsub("#", "", tweet))
+}
+
+# pre-processing using regex
+tweetsTMDF$processed_tweet <- apply(tweetsTMDF['message'], 2, 
+                                    removeURLs) 
+tweetsTMDF$processed_tweet <- apply(tweetsTMDF['processed_tweet'],2, 
+                                    removeUsernamesWithRT) 
+tweetsTMDF$processed_tweet <- apply(tweetsTMDF['processed_tweet'],2, 
+                                    removeUsernames)
+tweetsTMDF$processed_tweet <- apply(tweetsTMDF['processed_tweet'],2, 
+                                    removeHashtagSignOnly)
+
+# pre-processing tokenization, stopword, stemming
+text_tmdf <- tweetsTMDF %>%
+  unnest_tokens(word, processed_tweet)%>%
+  anti_join(stop_words[stop_words$lexicon == "snowball",], by = "word")%>%
+  mutate(stem = wordStem(word))
+
+
+clean.data_c <- clean.data$Company.Name
+full_stop_words <- c(lapply(list(clean.data_c), tolower), list(c("cloud", "7", "2", "3", "hsbc", "dell", "bp", "dte", "aig", "duke", "amazon", "exxon", "hess", "petrochina", "sachs", "lloyds", "bcs", "cm", "nokia", "atlassian", "autodesk", "vmware", "slb", "shell", "schlumberger", "ecopetrol", "barclays", "exxonmobil", "adobe", "apple", "broadcom", "chevron", "s.a", "mro", "shopify", "mastercard", "mobil")))
+
+custom_stop_words <- bind_rows(tibble(word = unlist(full_stop_words),  
+                                      lexicon = c("custom")), 
+                               stop_words)
+
+
+#  we can tokenize text into consecutive sequences of words, called n-grams
+text_bigrams<-tweetsTMDF %>%
+  filter(sentiment == "negative") %>% 
+  filter(sector == "Energy") %>% 
+  unnest_tokens(bigram, processed_tweet, token="ngrams", n=2)
+
+text_bigrams %>%
+  count(bigram, sort = TRUE)
+
+bigrams_separated <- text_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtered <- bigrams_separated %>%
+  filter(!word1 %in% custom_stop_words$word) %>%
+  filter(!word2 %in% custom_stop_words$word)
+
+# new bigram counts:
+bigram_counts <- bigrams_filtered %>% 
+  count(word1, word2, sort = TRUE)
+
+bigrams_united <- bigrams_filtered %>%
+  unite(bigram, word1, word2, sep = " ")
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+bigrams_united %>%
+  count(sector, bigram) %>%
+  arrange(desc(n)) %>% 
+  top_n(8) %>% 
+  ggplot(aes(y = fct_reorder(bigram, n), x = n)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = "Counts",
+       y = "Bigram",
+       title = "Most Frequent Bigrams in Tweets", 
+  )+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+The chart above shows the most frequent bigrams used in tweets with negative sentiments from all the considered companies in this study. It looks like the actions of the CEOs of companies are the most responsible for making these companies have bad sentiments on social media. Also, it seems there are some criminal acts regarding fundings on climate in the UK that are causing negative sentiments on the news about these companies.
+
+
+
+```{r echo=FALSE, message=FALSE}
+
+tweetsTMDF %>%
+  group_by(Day = as.integer(day(date)),
+           sector,
+           sentiment 
+           ) %>% 
+  summarize(
+    average_sentiments = mean(score)
+  ) %>% 
+  ggplot(., aes(Day, average_sentiments))+
+  scale_color_brewer(palette = "Paired")+
+  geom_smooth(aes(color=sector), se = FALSE)+
+  labs(y="Average Sentiments", x="Day",
+       title = "Sentiment Trend Per Day For Each Sector", 
+  )+
+  facet_wrap(sentiment~sector, nrow(3), scales = "free_y")
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+It can be seen from the chart above that the Technology Sector looks like a no-go area for potential investors, the twitter sentiments around companies in this sector has been drastically increasing towards the negative end without any increase. Also, the Energy sector looks good, with maybe only 1 day or no day of negative sentiment, and constantly fluctuating amount of positive sentiments.
+
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+# filter for only relatively common combinations
+bigram_graph <- bigram_counts %>%
+  graph_from_data_frame()
+
+set.seed(2023)
+a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+ggraph(bigram_graph, layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 arrow = a, end_cap = circle(.07, 'inches')) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()
+
+
+```
+
+The chart above shows all of the relationships among words used in the tweets simultaneously, we particularly focused on tweets with negative sentiments. Firstly, looking into the network shaped as "3" in the chart, we could see that the chart linked up all words used in the tweets that were not English Language. Also, there were things around fire, live, army, and indian, which are associated with the ongoing war in Ukraine, these are mostly affecting the opinions about these companies as expected.
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+get_sentiments("bing")
+
+
+# read in csv file as tibble/data frame
+scrape.data <- read.csv(file='stockdata.csv', stringsAsFactors=FALSE)
+
+clean.data <- as_tibble(scrape.data)
+
+# transform table into one-word-per-line tidytext format
+clean.data2 <- clean.data %>%
+  unnest_tokens(word, Top.News)
+
+clean.data_c <- clean.data$Company.Name
+full_stop_words <- c(lapply(list(clean.data_c), tolower), list(c("cloud", "7", "2", "3", "hsbc", "dell", "bp", "dte", "aig", "duke", "amazon", "exxon", "hess", "petrochina", "sachs", "lloyds", "bcs", "cm", "nokia", "atlassian", "autodesk", "vmware", "slb", "shell", "schlumberger", "ecopetrol", "barclays", "exxonmobil", "adobe", "apple", "broadcom", "chevron", "s.a", "mro", "shopify", "mastercard", "mobil")))
+
+custom_stop_words <- bind_rows(tibble(word = unlist(full_stop_words),  
+                                      lexicon = c("custom")), 
+                               stop_words)
+
+# remove stop words
+data(stop_words)
+clean.data2 <- clean.data2 %>%
+  anti_join(custom_stop_words)
+
+
+company_sentiment <- clean.data2 %>%
+  inner_join(get_sentiments("bing"))
+
+company_sentiment2 <- company_sentiment %>% 
+  count(Sector, sentiment)
+
+company_sentiment3 <- company_sentiment2 %>% 
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+  mutate(total_sentiment = positive - negative)
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+company_sentiment2 %>% 
+  group_by(sentiment, Sector) %>% 
+  summarise(total_sentiment = sum(n)) %>% 
+  arrange(desc(total_sentiment)) %>% 
+  ggplot(.,aes(x = sentiment, y = total_sentiment, fill=Sector)) +
+  geom_col(aes(fill=Sector), position = "dodge", stats="identity", show.legend = TRUE)+
+  theme_bw() + 
+  labs(
+    title = "News Sentiment By Companies Sector", 
+  )+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(. ~ sentiment, ncol = 2, scales = "free_x")
+
+```
+
+
+The chart above shows that the Energy sector had the least negative sentiment and the most positive sentiment, so the investor might want to consider investing in a company in these sector, but they should be wary about the recency of these tweets as well.
+
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+company_sentiment4 <- company_sentiment %>% 
+  count(Sector, Company.Name, sentiment)
+
+company_sentiment5 <- company_sentiment4 %>% 
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0)
+
+
+company_sentiment4 %>% 
+  filter(sentiment == "negative") %>% 
+  group_by(Sector, Company.Name, sentiment) %>% 
+  summarise(total_sentiment = sum(n)) %>% 
+  arrange(Sector, desc(total_sentiment))
+
+# Top Negative Sentiments
+bing_word_counts1 <- clean.data2 %>% 
+  filter(Company.Name %in% c("DTE Energy Company", "Barclays", "Atlassian")) %>% 
+  inner_join(get_sentiments("bing")) %>%
+  count(Company.Name, word, sentiment, sort = TRUE) %>%
+  ungroup()
+
+bing_word_counts2 <- clean.data2 %>% 
+  inner_join(get_sentiments("bing")) %>%
+  count(Company.Name, word, sentiment, sort = TRUE) %>%
+  ungroup()
+
+```
+
+```{r echo=FALSE, message=FALSE}
+
+bing_word_counts1 %>%
+  group_by(sentiment) %>%
+  slice_max(n, n = 10) %>% 
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(n, word, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(Company.Name~sentiment, ncol = 2, scales = "free_y") +
+  labs(x = "Contribution to sentiment",
+       y = NULL,
+       title = "Most Frequent words For Top Companies Based on Sentiments", 
+  )+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+The chart above shows the most used words (for both positive and negative sentiments) in the tweets about the company with the most negative sentiment in each sector. It can be seen that Barclays is experiencing so much fraud activities. People are talking about how the Energy sector can be more sustainable and clean in their actvities, they are most likely making so much progress in these areas since it falls under the positive opinion of people.
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+
+# Top Positive Sentiments
+clean.data2 %>%
+  anti_join(custom_stop_words) %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+
+
+clean <- clean.data2 %>%
+  filter(Company.Name == "Adobe")
+
+
+```
+
+ 
+ 
+ 
+ 
+ 
+
+**Most Frequent Word in the Energy Sector by Sentiment**
+```{r echo=FALSE, message=FALSE}
+
+energy <- clean.data2 %>%
+  filter(Sector %in% c("Energy")) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("gray20", "gray80"),
+                   max.words = 100,
+                   fixed.asp=TRUE)
+```
+
+From the chart above, the most used negative words in this sector are crude, volatile, defensive, and falling, while the most used positive words are strong, support, and safe.
+
+
+**Most Frequent Word in the Financial Services Sector by Sentiment**
+```{r echo=FALSE, message=FALSE}
+
+fin_serv <- clean.data2 %>%
+  filter(Sector %in% c("Financial Services")) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("gray20", "gray80"),
+                   max.words = 100,
+                   fixed.asp=TRUE)
+
+```
+From the chart above, the most used negative words in this sector are losses, decline, and fall, while the most used positive words are top and lead.
+
+
+**Most Frequent Word in the Technology Sector by Sentiment**
+```{r echo=FALSE, message=FALSE}
+
+technology <- clean.data2 %>%
+  filter(Sector %in% c("Technology")) %>%
+  inner_join(get_sentiments("bing")) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("gray20", "gray80"),
+                   max.words = 100,
+                   fixed.asp=TRUE)
+
+```
+
+From the chart above, the most used negative words in this sector are protests, miss, issues, and downturn, while the most used positive words are top, ready, and guidance.
+
+
+```{r echo=FALSE, include=FALSE, message=FALSE}
+
+# read in csv file as tibble/data frame
+scrape.data <- read.csv(file='stockdata.csv', stringsAsFactors=FALSE)
+
+clean.data <- as_tibble(scrape.data)
+
+
+# split into words
+clean.data_word <- clean.data %>%
+  unnest_tokens(word, Top.News)
+
+clean.data2 <- clean.data$Company.Name
+full_stop_words <- c(lapply(list(clean.data_c), tolower), list(c("cloud", "7", "2", "3", "hsbc", "dell", "bp", "dte", "aig", "duke", "amazon", "exxon", "hess", "petrochina", "sachs", "lloyds", "bcs", "cm", "nokia", "atlassian", "autodesk", "vmware", "slb", "shell", "schlumberger", "ecopetrol", "barclays", "exxonmobil", "adobe", "apple", "broadcom", "chevron", "s.a", "mro", "shopify", "mastercard", "mobil", "goldman", "5")))
+unlist(full_stop_words)
+
+custom_stop_words <- bind_rows(tibble(word = unlist(full_stop_words),  
+                                      lexicon = c("custom")), 
+                               stop_words)
+
+custom_stop_words
+
+clean.data_word <- clean.data_word %>%
+  inner_join(get_sentiments("bing"))
+
+
+# find company-word counts
+word_counts <- clean.data_word %>%
+  filter(sentiment == "negative") %>% 
+  anti_join(custom_stop_words) %>%
+  count(Company.Name, word, sort = TRUE)
+
+
+the_dtm <- word_counts %>%
+  cast_dtm(Company.Name, word, n)
+
+# set a seed so that the output of the model is predictable
+the_lda <- LDA(the_dtm, k = 6, control = list(seed = 1234))
+the_lda
+# A LDA_VEM topic model with 3 topics.
+
+the_topics <- tidy(the_lda, matrix = "beta")
+the_topics
+
+
+top_terms <- the_topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 3) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+
+
+
+
+the_gamma <- tidy(the_lda, matrix = "gamma")
+the_gamma
+
+
+sector <- clean.data$Sector
+
+full_data <- merge(the_gamma, clean.data, by.x = "document", by.y = "Company.Name", all.x = TRUE)
+
+
+```
+
+
+
+**Topics of News with Negative Sentiments**
+```{r echo=FALSE, message=FALSE}
+
+top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, ncol = 2, scales = "free") +
+  scale_y_reordered()
+
+
+# reorder titles in order of topic 1, topic 2, etc before plotting
+full_data %>%
+  mutate(title = reorder(Sector, gamma * topic)) %>%
+  ggplot(aes(factor(topic), gamma)) +
+  geom_boxplot() +
+  facet_wrap(~ Sector) +
+  labs(x = "topic", y = expression(gamma))
+
+```
+
+The focus here was on news that had negative sentiments, to see the issues that the companies are having. From the two charts above, it can be seen that the Financial Services Sector is solely about topic 5, which emphasizes recession. Also, the Technology Sector is solely about topic 3, which emphasizes protests and loses. Finallly, the Energy Sector is a mix of two topics, fairly topic 1 and mainly topic 6; talking about resignations, declines, issues etc.
+
+
+
+# Limitations/Next Steps
+
+## Limitations/Challenges Faced:
+
+**Bot Access/Term of Use**: Some target websites for scraping data had very strict restrictions to scrape or allow any automation access. These websites were more rich in data and easier to scrape based on the HTML structure, but the studies had to be done with website that was friendly to web scraping.
+
+**Complicated Web Page Structure:** The Web/html structure for the data source used for were complicated with no standard way of accessing some html tag content. Some of the easy ways of getting the xpath or css selectors (for example - SelectorGadget) didn't work out for such kinds of complicated web pages, so a thorough understanding of the pattern of the html structure had to be understood before manually coming up with the individual xpath for each data points.
+
+**Multiple Data Structure:** All the data points needed were not on a single webpage which required creating multiple scrappers for each url and understanding the uniquely different structure for each url.
+
+**Quality of Data:** The lack of quality data structure in the data coming from Stock Analysis and Twitter resulted in a lot of data manipulation and cleaning, they were highly unstructured in their natural form. For the tweets, the usernames had to be removed, and even usernames with RT had to be removed, hashtags, and urls had to be removed from to get the clean texts that was used for analysis.
+
+**Ads Challenge:** There were a lot of random Ad contents popping up when accessing the Stock Analysis website.
+
+## Limitations/Next Steps
+
+**More Sectors and Industries:** For this study only 3 different sectors were considered, also only 10 organizations were selected in each of these sectors. This is limiting because there are many other sectors of companies that might be doing well and worth the investors interest, and even within each of the sectors there are tones of companies than the 10 just considered. So the plan is to include more sectors and industries within each sector, and maybe consider all the fortune 500 companies for a start and then later even more companies that didn't make fortune list but are on New York Stock Exchange (NYSE).
+
+**More Social Media Platforms:** This study only included Twitter as the social mdeia source of data, there are some other popular and well used social media platforms that people often air their opinions about these companies that should be considered,
+
+**Tweets in other Languages:** In this study, there was nothing done to cater for tweets about these companies written in languages different from English, and that was why the network graph group them together, so we couldn't get anything out of them. Moving forward, we would love to convert those language tweets into english first, before doing the required analysis on them, and these also has to be done accurately.
+
+
+
+# Conclusion
+
+This Research shows that stock market price movement correlate with the public sentiments regarding the companies. And we could clearly see that the sentiment about the company in the media, industry reports, social media reviews or investors’ opinions provided great insights into how the prices of stocks change, thus the texts and sentiments we gathered from people’s opinion on social media, and important news on websites will enable investors learn more about the stock market and give them valuable insights that can be used to make investment decisions.
+
+Our target audience for this project are strictly investors who are looking to make investments on stock or equity, they will be able to make use of our one-stop shop to get valuable information that can enhance their trading decision.
+
+
+# References
+
+* https://www.tidytextmining.com/index.html
+* https://youtu.be/MadMEVGMTUE
+* https://github.com/aabeveridge/janitor_wrangle
+* https://datascienceplus.com/parsing-text-for-emotion-terms-analysis-visualization-using-r-updated-analysis/
+* https://towardsdatascience.com/social-media-analysis-802d7de085a3
+* https://towardsdatascience.com/how-to-access-data-from-the-twitter-api-using-tweepy-python-e2d9e4d54978
